@@ -1,0 +1,19 @@
+@import "../styles/section-title.css";
+
+body {
+    width: 100%;
+    font-family: "Arimo", sans-serif;
+    background: rgba(24, 24, 24, 1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1440px;
+    margin: 80px auto;
+}
+
+section {
+    width: 930px;
+}
