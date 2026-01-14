@@ -1,25 +1,22 @@
 const inputNode = document.querySelector('.js-input');
 const btnNode = document.querySelector('.js-input-button');
 const moviesListNode = document.querySelector('.js-movies-list');
+const cicrleBtnNode = ('circle-btn');
+const deliteBtnNode = ('movie-delite-btn');
+const movieWrapperNode = ('movie-wrapper');
 
 let moviesList = [];
 
-const addBtnHandler = () => {
-    // 1. Получаем значение из поля ввода
-    const inputNodeValue = inputNode.value;
 
-    if (!inputNodeValue) {
-        return;
-    }
+const setMovie = (movie) => {
+    moviesList.push(movie);
+}
 
-    // 2. Запись значения в память
-    moviesList.push(inputNodeValue);
-    console.log(moviesList);
-
-    // 3. Сброс значения поля ввода
+const clearInput = () => {
     inputNode.value = '';
+}
 
-    // 4. Рендер списка
+const renderList = (moviesList) => {
     let movieCard = '';
     
     moviesList.forEach(element => {
@@ -35,6 +32,27 @@ const addBtnHandler = () => {
     });
 
     moviesListNode.innerHTML = movieCard;
+}
+
+
+
+const addBtnHandler = () => {
+    // 1. Получаем значение из поля ввода
+    const inputNodeValue = inputNode.value;
+
+    if (!inputNodeValue) {
+        return;
+    }
+
+    // 2. Запись значения в память
+    setMovie(inputNodeValue);
+
+    // 3. Сброс значения поля ввода
+    clearInput();
+
+    // 4. Рендер списка
+    renderList(moviesList);
+
 }
 
 btnNode.addEventListener('click', addBtnHandler);
