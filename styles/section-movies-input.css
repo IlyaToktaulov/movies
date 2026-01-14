@@ -1,9 +1,14 @@
 .section-movies {
     margin-top: 45px;
     padding: 70px;
-    height: 500px;
+    max-height: 550px;
     border-radius: 20px;
     background: rgba(35, 35, 35, 1);
+    overflow-y: scroll;
+}
+.section-movies::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0.0);
 }
 
 /* ↓ Input ↓ */
