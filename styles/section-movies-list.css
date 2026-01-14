@@ -8,15 +8,54 @@
 }
 
 .movie-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 71px;
-    padding: 28px 0px 28px 60px;
+    padding: 0px 20px 0px 60px;
     border-radius: 10px;
     background: rgba(58, 57, 57, 1);
+}
+
+.movie-wrapper-item {
+    display: flex;
+    gap: 20px;
 }
 
 .movie-title {
     color: rgba(243, 246, 249, 1);
     font-size: 20px;
     font-weight: 400;
+}
+.movie-title:first-letter {
+    text-transform: capitalize;
+}
+
+.circle-btn {
+    width: 19px;
+    height: 19px;
+    border: 1px solid rgba(243, 246, 249, 1);
+    opacity: 0.3;
+    border-radius: 50%;
+    background-color: rgba(58, 57, 57, 1);
+    cursor: pointer;
+}
+
+.circle-btn:active {
+    transform: scale(0.95);
+}
+
+.movie-delite-btn {
+    width: 23px;
+    height: 23px;
+    background: url(../img/delite-btn.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+}
+
+.movie-delite-btn:active {
+    transform: scale(0.95);
 }

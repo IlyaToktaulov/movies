@@ -25,8 +25,12 @@ const addBtnHandler = () => {
     moviesList.forEach(element => {
         movieCard += `
             <div class="movie-wrapper">
+                <div class="movie-wrapper-item">
+                    <button class="circle-btn"></button>
                     <p class="movie-title">${element}</p>
                 </div>
+                <button class="movie-delite-btn"></button>
+            </div>
         `;
     });
 

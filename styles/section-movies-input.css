@@ -47,3 +47,7 @@
     background-color: rgba(101, 50, 248, 1);
     cursor: pointer;
 }
+
+.input-button:active {
+    transform: scale(0.95);
+}
