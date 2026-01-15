@@ -1,9 +1,9 @@
 const inputNode = document.querySelector('.js-input');
 const btnNode = document.querySelector('.js-input-button');
 const moviesListNode = document.querySelector('.js-movies-list');
-const cicrleBtnNode = ('circle-btn');
-const deliteBtnNode = ('movie-delite-btn');
-const movieWrapperNode = ('movie-wrapper');
+const cicrleBtnNode = document.querySelector('.circle-btn');
+const deliteBtnNode = document.querySelector('.movie-delite-btn');
+const movieWrapperNode = document.querySelector('.movie-wrapper');
 
 let moviesList = [];
 
@@ -34,6 +34,9 @@ const renderList = (moviesList) => {
     moviesListNode.innerHTML = movieCard;
 }
 
+const muvieViewed = (movieWrapperNode) => {
+    movieWrapperNode.classList.add('viewed');
+}
 
 
 const addBtnHandler = () => {
@@ -52,7 +55,18 @@ const addBtnHandler = () => {
 
     // 4. Рендер списка
     renderList(moviesList);
-
 }
 
 btnNode.addEventListener('click', addBtnHandler);
+
+
+moviesListNode.addEventListener('click', (event) => {
+    if (event.target.classList.contains('circle-btn')) {
+        muvieViewed(event.target.closest('.movie-wrapper'));
+    }
+    if (event.target.classList.contains('movie-delite-btn')) {
+        const findMovie = event.target.closest('.movie-wrapper');
+        findMovie.remove();
+    }
+}) 
+
