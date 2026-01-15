@@ -32,6 +32,8 @@
     font-size: 20px;
     font-weight: 400;
 }
+
+
 .movie-title:first-letter {
     text-transform: capitalize;
 }

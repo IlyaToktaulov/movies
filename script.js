@@ -4,6 +4,7 @@ const moviesListNode = document.querySelector('.js-movies-list');
 const cicrleBtnNode = document.querySelector('.circle-btn');
 const deliteBtnNode = document.querySelector('.movie-delite-btn');
 const movieWrapperNode = document.querySelector('.movie-wrapper');
+const movieTitle = document.querySelector('.movie-title');
 
 let moviesList = [];
 
@@ -66,7 +67,8 @@ moviesListNode.addEventListener('click', (event) => {
     }
     if (event.target.classList.contains('movie-delite-btn')) {
         const findMovie = event.target.closest('.movie-wrapper');
-        findMovie.remove();
+
+        findMovie.remove;
     }
 }) 
 
