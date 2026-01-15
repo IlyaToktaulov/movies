@@ -18,6 +18,10 @@
     background: rgba(58, 57, 57, 1);
 }
 
+.viewed {
+    opacity: 0.5;
+}
+
 .movie-wrapper-item {
     display: flex;
     gap: 20px;
