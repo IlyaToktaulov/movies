@@ -6,5 +6,3 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "813098511026",
   appId: "1:813098511026:web:d1460517f15bd1e70d77ab"
 };
-
-const app = initializeApp(FIREBASE_CONFIG);
