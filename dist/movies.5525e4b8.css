@@ -1,0 +1,179 @@
+h1 {
+  text-align: center;
+  color: #f3f6f9;
+  letter-spacing: -4%;
+  font-size: 120px;
+  font-weight: 400;
+  line-height: 138px;
+}
+
+.subtitle_text {
+  text-align: center;
+  color: #f3f6f9;
+  background: #6532f8;
+  border: 1px solid #6532f8;
+  border-radius: 200px;
+  width: 183px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.subtitle_year {
+  text-align: center;
+  color: #f3f6f9;
+  background: #6532f8;
+  border: 1px solid #6532f8;
+  border-radius: 200px;
+  width: 75px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.subtitle {
+  gap: 5px;
+  margin-left: 140px;
+  display: flex;
+}
+
+.section-movies {
+  background: #232323;
+  border-radius: 20px;
+  max-height: 550px;
+  margin-top: 45px;
+  padding: 70px;
+  overflow-y: scroll;
+}
+
+.section-movies::-webkit-scrollbar {
+  background: #fff0;
+  width: 0;
+}
+
+.input-container {
+  align-items: baseline;
+  gap: 20px;
+  display: flex;
+}
+
+.input {
+  color: #f3f6f9;
+  background-color: #232323;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 39px;
+}
+
+.input:focus {
+  outline: none !important;
+}
+
+.input-wrapper {
+  opacity: .5;
+  border-bottom: 1px solid #f3f6f9;
+  width: 411px;
+  padding-bottom: 2px;
+}
+
+.input-button {
+  cursor: pointer;
+  background-color: #6532f8;
+  border-radius: 31px;
+  width: 62px;
+  height: 62px;
+  padding: 16px;
+}
+
+.input-button:active {
+  transform: scale(.95);
+}
+
+.movies-list {
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  display: flex;
+}
+
+.movie-wrapper {
+  background: #3a3939;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 71px;
+  padding: 0 20px 0 60px;
+  display: flex;
+}
+
+.viewed {
+  opacity: .5;
+}
+
+.movie-wrapper-item {
+  gap: 20px;
+  display: flex;
+}
+
+.movie-title {
+  color: #f3f6f9;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.movie-title:first-letter {
+  text-transform: capitalize;
+}
+
+.circle-btn {
+  opacity: .3;
+  cursor: pointer;
+  background-color: #3a3939;
+  border: 1px solid #f3f6f9;
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+}
+
+.circle-btn:active {
+  transform: scale(.95);
+}
+
+.movie-delite-btn {
+  cursor: pointer;
+  background: url("delite-btn.37e0d2d2.png") 0 0 / contain no-repeat;
+  border: none;
+  width: 23px;
+  height: 23px;
+}
+
+.movie-delite-btn:active {
+  transform: scale(.95);
+}
+
+body {
+  background: #181818;
+  width: 100%;
+  font-family: Arimo, sans-serif;
+}
+
+.container {
+  flex-direction: column;
+  align-items: center;
+  width: 1440px;
+  margin: 80px auto;
+  display: flex;
+}
+
+section {
+  width: 930px;
+}
+/*# sourceMappingURL=movies.5525e4b8.css.map */

@@ -27,7 +27,6 @@ const renderList = (moviesList) => {
                     <button class="circle-btn"></button>
                     <p class="movie-title">${element}</p>
                 </div>
-                <button class="movie-delite-btn"></button>
             </div>
         `;
     });
