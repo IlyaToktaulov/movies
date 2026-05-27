@@ -1,4 +1,4 @@
-const FIREBASE_CONFIG = {
+export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAhBuFxpGEJ814btRp_X2uOYqhMcKKqn7o",
   authDomain: "films-46301.firebaseapp.com",
   projectId: "films-46301",

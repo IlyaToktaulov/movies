@@ -5,12 +5,18 @@ import {
     collection, 
     setDoc,
     getDocs,
+    doc
  } from "firebase/firestore";
 
 export class Model {
-    constructor() {
+    constructor({
+        newFilmFromFirestore,
+        filmsFromFirestore
+    }) {
         const app = initializeApp(FIREBASE_CONFIG);
         this.db = getFirestore(app);
+        this.filmsFromFirestore = filmsFromFirestore;
+        this.newFilmFromFirestore = newFilmFromFirestore;
         this.films = [];
     }
 
@@ -23,19 +29,29 @@ export class Model {
                 id: doc.id
             })
         });
+
+        this.filmsFromFirestore(this.films);
     }
 
     addFilm = async(film) => {
         try {
             const id = crypto.randomUUID();
-            await setDoc(collection(this.db, "films", id), {
+            await setDoc(doc(this.db, "films", id), {
                 title: film.title,
                 done: film.done,
                 id: id
             });
-            console.log("Document written with ID: ", id);
+
+            this.films.push({
+                title: film.title,
+                done: film.done,
+                id: id
+            })
+
+            this.newFilmFromFirestore(film);
+            console.log("Добавлен фильм ID: ", id);
         } catch (e) {
-            console.error("Error adding document: ", e);
+            console.error("Что-то пошло не так: ", e);
         }
     }
 }
