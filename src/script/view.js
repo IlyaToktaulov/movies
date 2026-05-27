@@ -1,11 +1,13 @@
 export class View {
     constructor({
         dataToFirestore,
+        handleClickFilm
     }) {
         this.inputNode = document.querySelector('.js-input');
         this.btnNode = document.querySelector('.js-input-button');
         this.moviesListNode = document.querySelector('.js-movies-list');
         this.dataToFirestore = dataToFirestore;
+        this.handleClickFilm = handleClickFilm;
 
         this.btnNode.addEventListener('click', this.addNewFilm);
     }
@@ -26,14 +28,25 @@ export class View {
         input.setAttribute('class', 'circle-btn')
 
         input.onclick = () => {
+            this.handleFilmId(film.id)
+            
+            if (input.checked) {
+                div.setAttribute('class', 'viewed');
+            } else {
+                div.setAttribute('class', 'movie-wrapper');
+            }
+        }
 
+        if (film.done) {
+            input.setAttribute('checked', true);
+            div.setAttribute('class', 'viewed');
+        } else {
+            div.setAttribute('class', 'movie-wrapper');
         }
 
         label.innerText = film.title;
         label.setAttribute('for', film.id);
         label.setAttribute('class', 'movie-title');
-
-        div.setAttribute('class', 'movie-wrapper');
 
         div.append(label, input);
 
@@ -47,5 +60,11 @@ export class View {
         }
 
         this.dataToFirestore(film);
+
+        this.inputNode.value = '';
+    }
+
+    handleFilmId = (id) => {
+        this.handleClickFilm(id);
     }
 }

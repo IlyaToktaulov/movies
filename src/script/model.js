@@ -5,7 +5,8 @@ import {
     collection, 
     setDoc,
     getDocs,
-    doc
+    doc,
+    updateDoc
  } from "firebase/firestore";
 
 export class Model {
@@ -53,5 +54,30 @@ export class Model {
         } catch (e) {
             console.error("Что-то пошло не так: ", e);
         }
+    }
+
+    getFilms() {
+        return this.films;
+    }
+
+    update = async(film) => {
+        const ref = doc(this.db, "films", film.id);
+
+        await updateDoc(ref, {
+            done: film.done
+        });
+    }
+
+    toggleFilm = (id) => {
+        const films = this.getFilms();
+
+        films.forEach(film => {
+            if (id !==film.id) {
+                return;
+            } else {
+                film.done = !film.done;
+                this.update(film);
+            }
+        });
     }
 }

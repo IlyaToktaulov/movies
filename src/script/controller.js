@@ -8,7 +8,8 @@ export class Controller {
             newFilmFromFirestore: this.loadNewFilmFromFirestore
         });
         this.view = new View({
-            dataToFirestore: this.loadDataToFirestore
+            dataToFirestore: this.loadDataToFirestore,
+            handleClickFilm: this.getFilmId
         });
     }
 
@@ -26,5 +27,9 @@ export class Controller {
 
     loadNewFilmFromFirestore = (film) => {
         this.view.renderNewFilm(film);
+    }
+
+    getFilmId = (id) => {
+        this.model.toggleFilm(id);
     }
 }

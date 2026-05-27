@@ -731,7 +731,8 @@ class Controller {
             newFilmFromFirestore: this.loadNewFilmFromFirestore
         });
         this.view = new (0, _view.View)({
-            dataToFirestore: this.loadDataToFirestore
+            dataToFirestore: this.loadDataToFirestore,
+            handleClickFilm: this.getFilmId
         });
     }
     init() {
@@ -745,6 +746,9 @@ class Controller {
     };
     loadNewFilmFromFirestore = (film)=>{
         this.view.renderNewFilm(film);
+    };
+    getFilmId = (id)=>{
+        this.model.toggleFilm(id);
     };
 }
 
@@ -792,6 +796,25 @@ class Model {
         } catch (e) {
             console.error("\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A: ", e);
         }
+    };
+    getFilms() {
+        return this.films;
+    }
+    update = async (film)=>{
+        const ref = (0, _firestore.doc)(this.db, "films", film.id);
+        await (0, _firestore.updateDoc)(ref, {
+            done: film.done
+        });
+    };
+    toggleFilm = (id)=>{
+        const films = this.getFilms();
+        films.forEach((film)=>{
+            if (id !== film.id) return;
+            else {
+                film.done = !film.done;
+                this.update(film);
+            }
+        });
     };
 }
 
@@ -30144,11 +30167,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "View", ()=>View);
 class View {
-    constructor({ dataToFirestore }){
+    constructor({ dataToFirestore, handleClickFilm }){
         this.inputNode = document.querySelector('.js-input');
         this.btnNode = document.querySelector('.js-input-button');
         this.moviesListNode = document.querySelector('.js-movies-list');
         this.dataToFirestore = dataToFirestore;
+        this.handleClickFilm = handleClickFilm;
         this.btnNode.addEventListener('click', this.addNewFilm);
     }
     render(films) {
@@ -30163,11 +30187,18 @@ class View {
         input.setAttribute('type', 'checkbox');
         input.setAttribute('id', film.id);
         input.setAttribute('class', 'circle-btn');
-        input.onclick = ()=>{};
+        input.onclick = ()=>{
+            this.handleFilmId(film.id);
+            if (input.checked) div.setAttribute('class', 'viewed');
+            else div.setAttribute('class', 'movie-wrapper');
+        };
+        if (film.done) {
+            input.setAttribute('checked', true);
+            div.setAttribute('class', 'viewed');
+        } else div.setAttribute('class', 'movie-wrapper');
         label.innerText = film.title;
         label.setAttribute('for', film.id);
         label.setAttribute('class', 'movie-title');
-        div.setAttribute('class', 'movie-wrapper');
         div.append(label, input);
         this.moviesListNode.append(div);
     };
@@ -30177,6 +30208,10 @@ class View {
             done: false
         };
         this.dataToFirestore(film);
+        this.inputNode.value = '';
+    };
+    handleFilmId = (id)=>{
+        this.handleClickFilm(id);
     };
 }
 
